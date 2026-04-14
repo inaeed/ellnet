@@ -24,4 +24,4 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-Route::get('/listbarang/{id}/{nama}', [ListBarangController::class, 'show']);
+Route::get('/listbarang', [ListBarangController::class, 'tampilkan']);
