@@ -1,27 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ListBarangController;
+use App\Http\Controllers\BarangController;
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/contact', [HomeController::class, 'contact']);
-
-Route::get('/welcome', function () {
-    return "Selamat Datang";
+// Default welcome
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('/user/{id}', function ($id) {
-    return "User ID: " . $id;
-});
+// Route ke controller Barang
+Route::get('/listbarang', [BarangController::class, 'tampilkan']);
 
-Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', function () {
-        return "Admin Dashboard";
-    });
-
-    Route::get('/users', function () {
-        return "Admin Users";
-    });
-});
-
-Route::get('/listbarang', [ListBarangController::class, 'tampilkan']);
+// Route ke halaman utama (langsung ke view)
+Route::view('/home', 'home');
+Route::view('/about', 'about');
+Route::view('/product', 'product');
+Route::view('/contact', 'contact');
+Route::view('/login', 'login');
+Route::view('/register', 'register');
+Route::view('/dashboard', 'dashboard');
